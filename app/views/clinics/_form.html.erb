@@ -1,0 +1,27 @@
+<%= form_with(model: clinic) do |form| %>
+  <% if clinic.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(clinic.errors.count, "error") %> prohibited this clinic from being saved:</h2>
+
+      <ul>
+        <% clinic.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='form-group mb-4'>
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class='form-group mb-4'>
+    <%= form.label :people, style: "display: block" %>
+    <%= form.select(:person_ids, Person.all.collect {|p| [p.name, p.id]}, {}, {multiple: true}) %>
+  </div>
+
+  <div>
+    <%= form.submit class: 'form-control btn btn-primary'  %>
+  </div>
+<% end %>

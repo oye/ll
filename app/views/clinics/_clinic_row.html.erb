@@ -1,0 +1,11 @@
+<tr>
+  <td><%= clinic.name %></td>
+  <td>
+    <% clinic.people.each do |person|%>
+      <%= link_to person.name, person %><br/>
+    <% end %>
+  </td>
+  <td><%= link_to 'Show', clinic %></td>
+  <td><%= link_to 'Edit', edit_clinic_path(clinic) %></td>
+</td>
+

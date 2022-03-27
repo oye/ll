@@ -1,0 +1,21 @@
+<div id="<%= dom_id person %>">
+  <p>
+    <strong>Name:</strong>
+    <%= person.name %>
+  </p>
+  <p>
+    <strong>HPR-Number:</strong>
+    <%= person.hpr_number %>
+  </p>
+  <p>
+    <strong>Date of birth:</strong>
+    <%= person.date_of_birth %>
+  </p>
+
+  <p>
+    <strong>Clinics: </strong>
+    <% person.clinics.each do |clinic|%>
+    <%= link_to clinic.name, clinic_url(clinic) %>
+    <% end %>
+  </p>
+</div>

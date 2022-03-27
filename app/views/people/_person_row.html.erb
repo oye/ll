@@ -1,0 +1,13 @@
+<tr>
+  
+  <td><%= person.name %></td>
+  <td><%= person.hpr_number %></td>
+  <td><%= person.date_of_birth %></td>
+  <td>
+    <% person.clinics.each do |clinic|%>
+      <%= link_to clinic.name, clinic_url(clinic) %><br/>
+    <% end %>
+  </td>
+  <td><%= link_to 'Show', person %></td>
+  <td><%= link_to 'Edit', edit_person_path(person) %></td>
+</td>

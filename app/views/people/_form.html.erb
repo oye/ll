@@ -1,0 +1,35 @@
+<%= form_with(model: person) do |form| %>
+  <% if person.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+        <% person.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='form-group mb-4'>
+    <%= form.label :hpr_number %>
+    <%= form.number_field :hpr_number, class: 'form-control', disabled: true %>
+  </div>
+
+  <div class='form-group mb-4'>
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class='form-group mb-4'>
+    <%= form.label :date_of_birth %>
+    <%= form.date_field :date_of_birth, class: 'form-control' %>
+  </div>
+
+  <div class='form-group mb-4'>
+    <%= form.label :clinics, style: "display: block" %>
+    <%= form.select(:clinic_ids, Clinic.all.collect {|c| [c.name, c.id]}, {}, {multiple: true}) %>
+  </div>
+
+  <%= form.submit class: 'form-control btn btn-primary' %>
+<% end %>

@@ -1,0 +1,20 @@
+<%= form_with(model: person) do |form| %>
+  <% if person.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+        <% person.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='form-group mb-4'>
+    <%= form.label :hpr_number, style: "" %>
+    <%= form.number_field :hpr_number, class: 'form-control', placeholder: 'Type HPR-number' %>
+  </div>
+
+  <%= form.submit class: 'form-control btn btn-primary' %>
+<% end %>
